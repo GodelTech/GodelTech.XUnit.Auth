@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0091D5CF-84E4-4AEC-A683-8FAA04A4242F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1E8B06D6-86C2-40AD-9D18-E030640F2717}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{43D9E24F-797A-4A76-A2D0-63AECCCEF4A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodelTech.XUnit.Auth", "src\GodelTech.XUnit.Auth\GodelTech.XUnit.Auth.csproj", "{332E648D-89C1-4F39-8F16-539DE47E85F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodelTech.XUnit.Auth.Tests", "test\GodelTech.XUnit.Auth.Tests\GodelTech.XUnit.Auth.Tests.csproj", "{E4CBC87F-C953-4420-A288-63D848BBBC38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodelTech.XUnit.Auth.IntegrationTests", "test\GodelTech.XUnit.Auth.IntegrationTests\GodelTech.XUnit.Auth.IntegrationTests.csproj", "{12DE5963-5FFF-4C33-9A76-D11212136FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GodelTech.XUnit.Auth.Demo.Api", "demo\GodelTech.XUnit.Auth.Demo.Api\GodelTech.XUnit.Auth.Demo.Api.csproj", "{55A73610-C779-44E6-B2D2-AF5B9BE727CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{332E648D-89C1-4F39-8F16-539DE47E85F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{332E648D-89C1-4F39-8F16-539DE47E85F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{332E648D-89C1-4F39-8F16-539DE47E85F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{332E648D-89C1-4F39-8F16-539DE47E85F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4CBC87F-C953-4420-A288-63D848BBBC38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4CBC87F-C953-4420-A288-63D848BBBC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4CBC87F-C953-4420-A288-63D848BBBC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4CBC87F-C953-4420-A288-63D848BBBC38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12DE5963-5FFF-4C33-9A76-D11212136FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12DE5963-5FFF-4C33-9A76-D11212136FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12DE5963-5FFF-4C33-9A76-D11212136FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12DE5963-5FFF-4C33-9A76-D11212136FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A73610-C779-44E6-B2D2-AF5B9BE727CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A73610-C779-44E6-B2D2-AF5B9BE727CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A73610-C779-44E6-B2D2-AF5B9BE727CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A73610-C779-44E6-B2D2-AF5B9BE727CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{332E648D-89C1-4F39-8F16-539DE47E85F1} = {0091D5CF-84E4-4AEC-A683-8FAA04A4242F}
+		{E4CBC87F-C953-4420-A288-63D848BBBC38} = {1E8B06D6-86C2-40AD-9D18-E030640F2717}
+		{12DE5963-5FFF-4C33-9A76-D11212136FEB} = {1E8B06D6-86C2-40AD-9D18-E030640F2717}
+		{55A73610-C779-44E6-B2D2-AF5B9BE727CE} = {43D9E24F-797A-4A76-A2D0-63AECCCEF4A6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66540145-4319-4C7F-9C80-70601D383386}
+	EndGlobalSection
+EndGlobal
