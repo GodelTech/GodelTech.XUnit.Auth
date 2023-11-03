@@ -14,5 +14,8 @@
   <ItemGroup>
     <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GodelTech.Microservices.Security" Version="3.0.0" />
+  </ItemGroup>
 
 </Project>
