@@ -26,5 +26,5 @@ extends:
     dotNetSDKVersions: [ '6.0.x', '7.0.x' ]
     enableNuGetValidationOutdatedPackages: false
     mutationTestingProjects:
-    - displayName: 'GodelTech.XUnit.Logging'
-      folderPath: '/src/GodelTech.XUnit.Logging'
+    - displayName: 'GodelTech.XUnit.Auth'
+      folderPath: '/src/GodelTech.XUnit.Auth'
