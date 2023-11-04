@@ -24,4 +24,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\demo\GodelTech.XUnit.Auth.Demo.Api\GodelTech.XUnit.Auth.Demo.Api.csproj" />
+    <ProjectReference Include="..\..\src\GodelTech.XUnit.Auth\GodelTech.XUnit.Auth.csproj" />
+  </ItemGroup>
+
 </Project>
