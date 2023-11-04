@@ -1,0 +1,8 @@
+{
+  "stryker-config": {
+    "test-projects": [
+      "../../test/GodelTech.XUnit.Auth.IntegrationTests/GodelTech.XUnit.Auth.IntegrationTests.csproj",
+      "../../test/GodelTech.XUnit.Auth.Tests/GodelTech.XUnit.Auth.Tests.csproj"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+
+    <!-- SonarQube needs this -->
+    <ProjectGuid>{00000000-0000-0000-0000-000000000030}</ProjectGuid>
+
+    <!-- Exclude the project from analysis -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+
+  <!-- Exclude the project from code coverage -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GodelTech.Microservices.Security" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>
