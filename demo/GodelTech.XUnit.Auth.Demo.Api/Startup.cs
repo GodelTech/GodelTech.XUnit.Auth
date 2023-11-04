@@ -18,6 +18,7 @@ public class Startup : MicroserviceStartup
     protected override IEnumerable<IMicroserviceInitializer> CreateInitializers()
     {
         yield return new DeveloperExceptionPageInitializer();
+        yield return new ExceptionHandlerInitializer();
         yield return new HstsInitializer();
 
         yield return new GenericInitializer(null, (app, _) => app.UseRouting());

@@ -13,7 +13,7 @@ namespace GodelTech.XUnit.Auth.Demo.Api.Controllers;
 [ApiController]
 public class FakeController : ControllerBase
 {
-    private static readonly IReadOnlyList<FakeModel> Items = new List<FakeModel>
+    public static readonly IReadOnlyList<FakeModel> Items = new List<FakeModel>
     {
         new FakeModel(),
         new FakeModel
