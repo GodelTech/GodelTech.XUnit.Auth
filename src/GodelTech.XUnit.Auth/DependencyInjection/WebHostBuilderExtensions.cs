@@ -1,12 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
-using System.Threading.Tasks;
 using GodelTech.XUnit.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Xunit.Abstractions;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -19,11 +17,8 @@ public static class WebHostBuilderExtensions
     /// Configures the JSON Web Token for tests.
     /// </summary>
     /// <param name="builder">The <see cref="IWebHostBuilder" />.</param>
-    /// <param name="output">The <see cref="ITestOutputHelper" />.</param>
     /// <returns>The <see cref="IWebHostBuilder"/>.</returns>
-    public static IWebHostBuilder ConfigureTestJwtToken(
-        [NotNull] this IWebHostBuilder builder,
-        ITestOutputHelper output = null)
+    public static IWebHostBuilder ConfigureTestJwtToken([NotNull] this IWebHostBuilder builder)
     {
         builder.ConfigureServices(
             services =>
@@ -44,15 +39,6 @@ public static class WebHostBuilderExtensions
                         options.TokenValidationParameters.ValidIssuer = TestJwtTokenProvider.Issuer;
                         options.TokenValidationParameters.ValidAudience = TestJwtTokenProvider.Audience;
                         options.TokenValidationParameters.IssuerSigningKey = TestJwtTokenProvider.SecurityKey;
-                        options.Events = new JwtBearerEvents
-                        {
-                            OnAuthenticationFailed = context =>
-                            {
-                                output?.WriteLine(context.Exception.Message);
-
-                                return Task.CompletedTask;
-                            }
-                        };
                     }
                 );
             }

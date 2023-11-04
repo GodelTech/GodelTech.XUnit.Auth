@@ -1,12 +1,11 @@
 ﻿using GodelTech.XUnit.Auth.Demo.Api;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
-using Microsoft.IdentityModel.Logging;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace GodelTech.XUnit.Auth.IntegrationTests;
 
@@ -33,12 +32,6 @@ public class AppTestFixture : WebApplicationFactory<Startup>
     {
         builder
             .UseSetting("https_port", "8080")
-            .ConfigureServices(
-                _ =>
-                {
-                    IdentityModelEventSource.ShowPII = true;
-                }
-            )
-            .ConfigureTestJwtToken(Output);
+            .ConfigureTestJwtToken();
     }
 }

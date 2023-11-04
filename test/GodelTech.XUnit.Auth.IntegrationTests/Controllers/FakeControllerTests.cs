@@ -58,4 +58,68 @@ public sealed class FakeControllerTests : IDisposable
         Assert.Equal(2, resultValue.Count);
         resultValue.Should().BeEquivalentTo(expectedResult);
     }
+
+    [Fact]
+    public async Task GetListAsync_ReturnsUnauthorized()
+    {
+        // Arrange & Act
+        var result = await _client
+            .GetAsync(new Uri("/fakes", UriKind.Relative));
+
+        // Assert
+        Assert.Equal(HttpStatusCode.Unauthorized, result.StatusCode);
+    }
+
+    [Fact]
+    public async Task PostAsync_ReturnsCreated()
+    {
+        // Arrange
+        var postModel = new FakePostModel
+        {
+            Title = "TestTitle"
+        };
+
+        var expectedResult = new FakeModel
+        {
+            Id = 2,
+            Title = "TestTitle"
+        };
+
+        // Act
+        var result = await _client
+            .WithJwtBearerToken(token => token.WithScope("fake.add"))
+            .PostAsJsonAsync(
+                "/fakes",
+                postModel
+            );
+
+        // Assert
+        Assert.Equal(HttpStatusCode.Created, result.StatusCode);
+
+        Assert.Equal($"https://localhost:8080/fakes/{expectedResult.Id}", result.Headers.Location?.AbsoluteUri);
+
+        var resultValue = await result.Content.ReadFromJsonAsync<FakeModel>();
+        resultValue.Should().BeEquivalentTo(expectedResult);
+    }
+
+    [Fact]
+    public async Task PostAsync_Forbidden()
+    {
+        // Arrange
+        var postModel = new FakePostModel
+        {
+            Title = "TestTitle"
+        };
+
+        // Act
+        var result = await _client
+            .WithJwtBearerToken(token => token.WithScope("invalid"))
+            .PostAsJsonAsync(
+                "/fakes",
+                postModel
+            );
+
+        // Assert
+        Assert.Equal(HttpStatusCode.Forbidden, result.StatusCode);
+    }
 }
