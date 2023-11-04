@@ -1,6 +1,6 @@
-﻿using System.Net.Http.Headers;
+﻿using System;
 using System.Net.Http;
-using System;
+using System.Net.Http.Headers;
 
 namespace GodelTech.XUnit.Auth;
 

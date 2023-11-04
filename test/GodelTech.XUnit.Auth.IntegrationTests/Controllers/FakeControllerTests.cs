@@ -1,15 +1,15 @@
 ﻿using System;
-using Microsoft.AspNetCore.Mvc.Testing;
-using System.Net.Http;
-using Xunit.Abstractions;
 using System.Collections.Generic;
-using System.Net.Http.Json;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
 using GodelTech.XUnit.Auth.Demo.Api.Controllers;
 using GodelTech.XUnit.Auth.Demo.Api.Models.Fake;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace GodelTech.XUnit.Auth.IntegrationTests.Controllers;
 

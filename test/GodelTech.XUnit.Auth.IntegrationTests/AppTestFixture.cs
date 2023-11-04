@@ -1,11 +1,11 @@
-﻿using GodelTech.XUnit.Auth.Demo.Api;
+﻿using System.Diagnostics.CodeAnalysis;
+using GodelTech.XUnit.Auth.Demo.Api;
 using Microsoft.AspNetCore.Hosting;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Xunit.Abstractions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Xunit.Abstractions;
 
 namespace GodelTech.XUnit.Auth.IntegrationTests;
 
