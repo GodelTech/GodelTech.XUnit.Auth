@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using GodelTech.XUnit.Auth.Token;
 
+[assembly: CLSCompliant(false)]
+[assembly: InternalsVisibleTo("GodelTech.XUnit.Auth.Tests")]
 namespace GodelTech.XUnit.Auth;
 
 /// <summary>

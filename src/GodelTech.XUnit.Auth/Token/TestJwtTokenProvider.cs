@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-namespace GodelTech.XUnit.Auth;
+namespace GodelTech.XUnit.Auth.Token;
 
 /// <summary>
 /// JSON Web Token provider.
