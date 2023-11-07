@@ -28,7 +28,7 @@ namespace GodelTech.XUnit.Auth.Routes
 
             var url = templateBinder.BindValues(routeValues);
 
-            return new Uri(url ?? "", UriKind.Relative);
+            return new Uri(url, UriKind.Relative);
         }
 
         /// <summary>

@@ -11,17 +11,6 @@ namespace GodelTech.XUnit.Auth.Tests;
 public class AssertRouteTests
 {
     [Fact]
-    public async Task CheckAsync_WhenWebApplicationFactoryIsNull_ThrowsArgumentNullException()
-    {
-        // Arrange & Act & Assert
-        var exception = await Assert.ThrowsAsync<ArgumentNullException>(
-            () => AssertRoute.CheckAsync<FakeEntryPoint>(null, new HttpClient(), new AuthorizedRoute("", HttpMethod.Get))
-        );
-
-        Assert.Equal("factory", exception.ParamName);
-    }
-
-    [Fact]
     public async Task CheckAsync_WhenHttpClientIsNull_ThrowsArgumentNullException()
     {
         // Arrange & Act & Assert

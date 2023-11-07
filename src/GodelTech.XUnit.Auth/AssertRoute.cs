@@ -31,7 +31,6 @@ namespace GodelTech.XUnit.Auth
             Routes.RouteBase route)
             where TEntryPoint : class
         {
-            if (factory == null) throw new ArgumentNullException(nameof(factory));
             if (client == null) throw new ArgumentNullException(nameof(client));
             if (route == null) throw new ArgumentNullException(nameof(route));
 

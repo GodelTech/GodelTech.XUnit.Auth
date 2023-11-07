@@ -25,8 +25,6 @@ namespace GodelTech.XUnit.Auth
             IList<RouteBase> routes)
             where TEntryPoint : class
         {
-            if (factory == null) throw new ArgumentNullException(nameof(factory));
-
             // Arrange
             var endpoints = factory.GetEndpoints();
 
