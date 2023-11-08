@@ -1,11 +1,16 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Template;
 
 namespace GodelTech.XUnit.Auth.Routes
 {
-    internal class RouteEndpointMatcher : IRouteEndpointMatcher
+    /// <summary>
+    /// RouteEndpoint matcher.
+    /// </summary>
+    public class RouteEndpointMatcher : IRouteEndpointMatcher
     {
+        /// <inheritdoc />
         public bool Match(RouteEndpoint endpoint, RouteBase route)
         {
             if (endpoint?.RoutePattern.RawText == null) return false;
@@ -20,6 +25,26 @@ namespace GodelTech.XUnit.Auth.Routes
                        endpoint.Metadata.OfType<HttpMethodMetadata>().Any(y => y.HttpMethods.Contains(route.HttpMethod.Method))
                        || !endpoint.Metadata.OfType<HttpMethodMetadata>().Any()
                    );
+        }
+
+        /// <inheritdoc />
+        public IList<RouteBase> FindMatchingRoutes(
+            RouteEndpoint endpoint,
+            IList<RouteBase> routes)
+        {
+            return routes
+                .Where(x => Match(endpoint, x))
+                .ToList();
+        }
+
+        /// <inheritdoc />
+        public IList<RouteEndpoint> FindMatchingEndpoints(
+            RouteBase route,
+            IList<RouteEndpoint> endpoints)
+        {
+            return endpoints
+                .Where(x => Match(x, route))
+                .ToList();
         }
     }
 }

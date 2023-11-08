@@ -16,4 +16,15 @@ public class WebApplicationFactoryExtensionsTests
 
         Assert.Equal("factory", exception.ParamName);
     }
+
+    [Fact]
+    public void GeTemplateBinderFactory_WhenWebApplicationFactoryIsNull_ThrowsArgumentNullException()
+    {
+        // Arrange & Act & Assert
+        var exception = Assert.Throws<ArgumentNullException>(
+            () => WebApplicationFactoryExtensions.GeTemplateBinderFactory<FakeEntryPoint>(null)
+        );
+
+        Assert.Equal("factory", exception.ParamName);
+    }
 }

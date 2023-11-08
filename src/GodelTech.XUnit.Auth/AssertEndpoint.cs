@@ -30,7 +30,7 @@ namespace GodelTech.XUnit.Auth
             // Arrange & Act & Assert
             foreach (var endpoint in endpoints)
             {
-                var matchingRoutes = endpoint.FindMatchingRoutes(routes, matcher);
+                var matchingRoutes = matcher.FindMatchingRoutes(endpoint, routes);
 
                 Assert.True(matchingRoutes.Any(), $"No matching route found for '{endpoint.RoutePattern.RawText}'");
                 Assert.True(matchingRoutes.Count == 1, $"More than one matching route found for '{endpoint.RoutePattern.RawText}'");

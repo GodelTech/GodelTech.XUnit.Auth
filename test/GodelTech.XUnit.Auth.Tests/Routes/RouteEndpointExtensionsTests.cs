@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using GodelTech.XUnit.Auth.Routes;
 using GodelTech.XUnit.Auth.Tests.Fakes;
 using Microsoft.AspNetCore.Routing;
@@ -37,20 +36,5 @@ public class RouteEndpointExtensionsTests
         );
 
         Assert.Equal("factory", exception.ParamName);
-    }
-
-    [Fact]
-    public void FindMatchingRoutes_WhenRouteEndpointIsNull_ThrowsArgumentNullException()
-    {
-        // Arrange & Act & Assert
-        var exception = Assert.Throws<ArgumentNullException>(
-            () => RouteEndpointExtensions.FindMatchingRoutes(
-                null,
-                new List<Auth.Routes.RouteBase>(),
-                new RouteEndpointMatcher()
-            )
-        );
-
-        Assert.Equal("endpoint", exception.ParamName);
     }
 }

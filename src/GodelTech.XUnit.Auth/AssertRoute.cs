@@ -36,7 +36,7 @@ namespace GodelTech.XUnit.Auth
             if (matcher == null) matcher = new RouteEndpointMatcher();
 
             // Arrange
-            var matchingEndpoint = Assert.Single(route.FindMatchingEndpoints(endpoints, matcher));
+            var matchingEndpoint = Assert.Single(matcher.FindMatchingEndpoints(route, endpoints));
 
             var uri = matchingEndpoint.GetUri(templateBinderFactory, route.RouteValues);
 
