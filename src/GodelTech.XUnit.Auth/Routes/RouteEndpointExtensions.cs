@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Routing.Template;
+﻿using System;
 using Microsoft.AspNetCore.Routing;
-using System;
+using Microsoft.AspNetCore.Routing.Template;
 
 namespace GodelTech.XUnit.Auth.Routes
 {
