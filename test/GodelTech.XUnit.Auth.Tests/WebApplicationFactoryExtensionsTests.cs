@@ -1,9 +1,8 @@
 ﻿using System;
-using GodelTech.XUnit.Auth.Routes;
 using GodelTech.XUnit.Auth.Tests.Fakes;
 using Xunit;
 
-namespace GodelTech.XUnit.Auth.Tests.Routes;
+namespace GodelTech.XUnit.Auth.Tests;
 
 public class WebApplicationFactoryExtensionsTests
 {

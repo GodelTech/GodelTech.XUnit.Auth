@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using GodelTech.XUnit.Auth.Routes;
 using GodelTech.XUnit.Auth.Tests.Fakes;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.AspNetCore.Routing.Template;
 using Moq;
 using Xunit;

@@ -12,16 +12,9 @@ public static class RouteEndpointHelpers
 {
     public static RouteEndpoint Create(string pattern, params HttpMethod[] httpMethods)
     {
-        RoutePattern routePattern;
-
-        if (pattern == null)
-        {
-            routePattern = RoutePatternFactory.Pattern(new List<RoutePatternPathSegment>());
-        }
-        else
-        {
-            routePattern = RoutePatternFactory.Parse(pattern);
-        }
+        var routePattern = pattern == null
+            ? RoutePatternFactory.Pattern(new List<RoutePatternPathSegment>())
+            : RoutePatternFactory.Parse(pattern);
 
         HttpMethodMetadata httpMethodMetadata = null;
 

@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using GodelTech.XUnit.Auth.Routes;
+using Microsoft.AspNetCore.Routing;
 using Xunit;
 
 namespace GodelTech.XUnit.Auth
@@ -14,24 +15,19 @@ namespace GodelTech.XUnit.Auth
         /// <summary>
         /// Check endpoints.
         /// </summary>
-        /// <typeparam name="TEntryPoint">A type in the entry point assembly of the application.
-        /// Typically the Startup or Program classes can be used.</typeparam>
-        /// <param name="factory">Factory for bootstrapping an application in memory for functional end to end tests.</param>
-        /// <returns>The list of route endpoints.</returns>
+        /// <param name="endpoints">The list of endpoints.</param>
         /// <param name="routes">The list of routes.</param>
         /// <param name="matcher">The matcher.</param>
-        public static void Check<TEntryPoint>(
-            WebApplicationFactory<TEntryPoint> factory,
-            IList<RouteBase> routes,
+        public static void Check(
+            IList<RouteEndpoint> endpoints,
+            IList<Routes.RouteBase> routes,
             IRouteEndpointMatcher matcher = default(RouteEndpointMatcher))
-            where TEntryPoint : class
         {
+            if (endpoints == null) throw new ArgumentNullException(nameof(endpoints));
+            if (routes == null) throw new ArgumentNullException(nameof(routes));
             if (matcher == null) matcher = new RouteEndpointMatcher();
 
-            // Arrange
-            var endpoints = factory.GetEndpoints();
-
-            // Act & Assert
+            // Arrange & Act & Assert
             foreach (var endpoint in endpoints)
             {
                 var matchingRoutes = endpoint.FindMatchingRoutes(routes, matcher);

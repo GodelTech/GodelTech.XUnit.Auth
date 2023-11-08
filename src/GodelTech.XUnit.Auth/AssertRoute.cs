@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using GodelTech.XUnit.Auth.Routes;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Template;
-using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace GodelTech.XUnit.Auth
@@ -18,31 +17,26 @@ namespace GodelTech.XUnit.Auth
         /// <summary>
         /// Check route.
         /// </summary>
-        /// <typeparam name="TEntryPoint">A type in the entry point assembly of the application.
-        /// Typically the Startup or Program classes can be used.</typeparam>
-        /// <param name="factory">Factory for bootstrapping an application in memory for functional end to end tests.</param>
-        /// <returns>The list of route endpoints.</returns>
-        /// <param name="client">The HttpClient.</param>
         /// <param name="route">The route.</param>
+        /// <param name="endpoints">The list of endpoints.</param>
+        /// <param name="templateBinderFactory">The <see cref="TemplateBinderFactory"/>.</param>
+        /// <param name="client">The HttpClient.</param>
         /// <param name="matcher">The matcher.</param>
         /// <returns>The matching endpoint.</returns>
-        public static async Task<RouteEndpoint> CheckAsync<TEntryPoint>(
-            WebApplicationFactory<TEntryPoint> factory,
-            HttpClient client,
+        public static async Task<RouteEndpoint> CheckAsync(
             Routes.RouteBase route,
+            IList<RouteEndpoint> endpoints,
+            TemplateBinderFactory templateBinderFactory,
+            HttpClient client,
             IRouteEndpointMatcher matcher = default(RouteEndpointMatcher))
-            where TEntryPoint : class
         {
-            if (client == null) throw new ArgumentNullException(nameof(client));
             if (route == null) throw new ArgumentNullException(nameof(route));
+            if (endpoints == null) throw new ArgumentNullException(nameof(endpoints));
+            if (client == null) throw new ArgumentNullException(nameof(client));
             if (matcher == null) matcher = new RouteEndpointMatcher();
 
             // Arrange
-            var endpoints = factory.GetEndpoints();
-
             var matchingEndpoint = Assert.Single(route.FindMatchingEndpoints(endpoints, matcher));
-
-            var templateBinderFactory = factory.Services.GetRequiredService<TemplateBinderFactory>();
 
             var uri = matchingEndpoint.GetUri(templateBinderFactory, route.RouteValues);
 
