@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GodelTech.XUnit.Auth;
+namespace GodelTech.XUnit.Auth.Token;
 
 /// <summary>
 /// JSON Web Token HTTP message handler.

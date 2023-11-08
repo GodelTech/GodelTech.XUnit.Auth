@@ -2,13 +2,14 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Threading.Tasks;
+using GodelTech.XUnit.Auth.Token;
 using GodelTech.XUnit.Auth.Utilities;
 using IdentityModel;
 using Microsoft.IdentityModel.Tokens;
 using Moq;
 using Xunit;
 
-namespace GodelTech.XUnit.Auth.Tests;
+namespace GodelTech.XUnit.Auth.Tests.Token;
 
 public class TestJwtTokenBuilderTests
 {

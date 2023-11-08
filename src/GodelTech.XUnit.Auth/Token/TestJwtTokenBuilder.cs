@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using GodelTech.XUnit.Auth.Utilities;
 using IdentityModel;
 
-[assembly: CLSCompliant(false)]
-[assembly: InternalsVisibleTo("GodelTech.XUnit.Auth.Tests")]
-namespace GodelTech.XUnit.Auth;
+namespace GodelTech.XUnit.Auth.Token;
 
 /// <summary>
 /// JSON Web Token builder.
