@@ -87,13 +87,21 @@ public sealed class RouteTests : IDisposable
     public async Task CheckRoutes(Routes.RouteBase route)
     {
         // Arrange & Act & Assert
-        await AssertRoute.CheckAsync(route, _fixture.GetEndpoints(), _fixture.GeTemplateBinderFactory(), _client);
+        await AssertRoute.CheckAsync(
+            route,
+            _fixture.GetEndpoints(),
+            _fixture.GeTemplateBinderFactory(),
+            _client
+        );
     }
 
     [Fact]
     public void CheckEndpoints()
     {
         // Arrange & Act & Assert
-        AssertEndpoint.Check(_fixture.GetEndpoints(), Routes);
+        AssertEndpoint.Check(
+            _fixture.GetEndpoints(),
+            Routes
+        );
     }
 }
