@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
@@ -11,6 +12,17 @@ public static class RouteEndpointHelpers
 {
     public static RouteEndpoint Create(string pattern, params HttpMethod[] httpMethods)
     {
+        RoutePattern routePattern;
+
+        if (pattern == null)
+        {
+            routePattern = RoutePatternFactory.Pattern(new List<RoutePatternPathSegment>());
+        }
+        else
+        {
+            routePattern = RoutePatternFactory.Parse(pattern);
+        }
+
         HttpMethodMetadata httpMethodMetadata = null;
 
         if (httpMethods != null && httpMethods.Any())
@@ -29,7 +41,7 @@ public static class RouteEndpointHelpers
 
         return new RouteEndpoint(
             _ => Task.CompletedTask,
-            RoutePatternFactory.Parse(pattern),
+            routePattern,
             0,
             metadata,
             string.Empty

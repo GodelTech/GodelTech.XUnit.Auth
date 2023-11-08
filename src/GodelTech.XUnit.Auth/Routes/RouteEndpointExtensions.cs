@@ -19,7 +19,10 @@ namespace GodelTech.XUnit.Auth.Routes
         /// <param name="routeValues">The route value dictionary.</param>
         /// <returns>The Uri.</returns>
         /// <exception cref="ArgumentNullException">Throws exception when TemplateBinderFactory is null.</exception>
-        public static Uri GetUri(this RouteEndpoint endpoint, TemplateBinderFactory factory, RouteValueDictionary routeValues)
+        public static Uri GetUri(
+            this RouteEndpoint endpoint,
+            TemplateBinderFactory factory,
+            RouteValueDictionary routeValues)
         {
             if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
             if (factory == null) throw new ArgumentNullException(nameof(factory));
@@ -36,24 +39,17 @@ namespace GodelTech.XUnit.Auth.Routes
         /// </summary>
         /// <param name="endpoint">The route endpoint.</param>
         /// <param name="routes">The list of routes.</param>
+        /// <param name="matcher">The matcher.</param>
         /// <returns>The list of matching routes.</returns>
-        public static IList<RouteBase> FindMatchingRoutes(this RouteEndpoint endpoint, IList<RouteBase> routes)
+        public static IList<RouteBase> FindMatchingRoutes(
+            this RouteEndpoint endpoint,
+            IList<RouteBase> routes,
+            IRouteEndpointMatcher matcher)
         {
             if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
 
             return routes
-                .Where(
-                    x =>
-                        new TemplateMatcher(
-                            TemplateParser.Parse(endpoint.RoutePattern.RawText),
-                            new RouteValueDictionary(endpoint.RoutePattern.RequiredValues)
-                        ).TryMatch(x.RoutePattern, new RouteValueDictionary(x.RouteValues))
-                        &&
-                        (
-                            endpoint.Metadata.OfType<HttpMethodMetadata>().Any(y => y.HttpMethods.Contains(x.HttpMethod.Method))
-                            || !endpoint.Metadata.OfType<HttpMethodMetadata>().Any()
-                        )
-                )
+                .Where(x => matcher.Match(endpoint, x))
                 .ToList();
         }
     }

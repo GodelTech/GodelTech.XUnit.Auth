@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using GodelTech.XUnit.Auth.Routes;
@@ -20,18 +19,22 @@ namespace GodelTech.XUnit.Auth
         /// <param name="factory">Factory for bootstrapping an application in memory for functional end to end tests.</param>
         /// <returns>The list of route endpoints.</returns>
         /// <param name="routes">The list of routes.</param>
+        /// <param name="matcher">The matcher.</param>
         public static void Check<TEntryPoint>(
             WebApplicationFactory<TEntryPoint> factory,
-            IList<RouteBase> routes)
+            IList<RouteBase> routes,
+            IRouteEndpointMatcher matcher = default(RouteEndpointMatcher))
             where TEntryPoint : class
         {
+            if (matcher == null) matcher = new RouteEndpointMatcher();
+
             // Arrange
             var endpoints = factory.GetEndpoints();
 
             // Act & Assert
             foreach (var endpoint in endpoints)
             {
-                var matchingRoutes = endpoint.FindMatchingRoutes(routes);
+                var matchingRoutes = endpoint.FindMatchingRoutes(routes, matcher);
 
                 Assert.True(matchingRoutes.Any(), $"No matching route found for '{endpoint.RoutePattern.RawText}'");
                 Assert.True(matchingRoutes.Count == 1, $"More than one matching route found for '{endpoint.RoutePattern.RawText}'");

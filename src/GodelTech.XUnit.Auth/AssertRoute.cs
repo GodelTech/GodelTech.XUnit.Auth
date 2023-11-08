@@ -24,20 +24,23 @@ namespace GodelTech.XUnit.Auth
         /// <returns>The list of route endpoints.</returns>
         /// <param name="client">The HttpClient.</param>
         /// <param name="route">The route.</param>
+        /// <param name="matcher">The matcher.</param>
         /// <returns>The matching endpoint.</returns>
         public static async Task<RouteEndpoint> CheckAsync<TEntryPoint>(
             WebApplicationFactory<TEntryPoint> factory,
             HttpClient client,
-            Routes.RouteBase route)
+            Routes.RouteBase route,
+            IRouteEndpointMatcher matcher = default(RouteEndpointMatcher))
             where TEntryPoint : class
         {
             if (client == null) throw new ArgumentNullException(nameof(client));
             if (route == null) throw new ArgumentNullException(nameof(route));
+            if (matcher == null) matcher = new RouteEndpointMatcher();
 
             // Arrange
             var endpoints = factory.GetEndpoints();
 
-            var matchingEndpoint = Assert.Single(route.FindMatchingEndpoints(endpoints));
+            var matchingEndpoint = Assert.Single(route.FindMatchingEndpoints(endpoints, matcher));
 
             var templateBinderFactory = factory.Services.GetRequiredService<TemplateBinderFactory>();
 
