@@ -18,7 +18,7 @@ public static class RouteEndpointHelpers
 
         HttpMethodMetadata httpMethodMetadata = null;
 
-        if (httpMethods != null && httpMethods.Any())
+        if (httpMethods != null && httpMethods.Length != 0)
         {
             httpMethodMetadata = new HttpMethodMetadata(
                 httpMethods.Select(x => x.Method)

@@ -26,7 +26,7 @@ public static class HttpClientExtensions
         Action<TestJwtTokenBuilder> configure = null,
         string baseAddress = "https://localhost:8080")
     {
-        if (client == null) throw new ArgumentNullException(nameof(client));
+        ArgumentNullException.ThrowIfNull(client);
 
         // to make direct https calls
         client.BaseAddress = new Uri(baseAddress);

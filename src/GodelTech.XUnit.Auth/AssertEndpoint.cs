@@ -23,8 +23,8 @@ namespace GodelTech.XUnit.Auth
             IList<Routes.RouteBase> routes,
             IRouteEndpointMatcher matcher = default(RouteEndpointMatcher))
         {
-            if (endpoints == null) throw new ArgumentNullException(nameof(endpoints));
-            if (routes == null) throw new ArgumentNullException(nameof(routes));
+            ArgumentNullException.ThrowIfNull(endpoints);
+            ArgumentNullException.ThrowIfNull(routes);
             if (matcher == null) matcher = new RouteEndpointMatcher();
 
             // Arrange & Act & Assert

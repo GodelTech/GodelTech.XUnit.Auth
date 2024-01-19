@@ -23,7 +23,7 @@ namespace GodelTech.XUnit.Auth
         public static IList<RouteEndpoint> GetEndpoints<TEntryPoint>(this WebApplicationFactory<TEntryPoint> factory)
             where TEntryPoint : class
         {
-            if (factory == null) throw new ArgumentNullException(nameof(factory));
+            ArgumentNullException.ThrowIfNull(factory);
 
             return factory
                 .Services
@@ -42,7 +42,7 @@ namespace GodelTech.XUnit.Auth
         public static TemplateBinderFactory GeTemplateBinderFactory<TEntryPoint>(this WebApplicationFactory<TEntryPoint> factory)
             where TEntryPoint : class
         {
-            if (factory == null) throw new ArgumentNullException(nameof(factory));
+            ArgumentNullException.ThrowIfNull(factory);
 
             return factory.Services.GetRequiredService<TemplateBinderFactory>();
         }
