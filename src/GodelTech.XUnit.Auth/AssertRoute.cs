@@ -30,9 +30,9 @@ namespace GodelTech.XUnit.Auth
             HttpClient client,
             IRouteEndpointMatcher matcher = default(RouteEndpointMatcher))
         {
-            if (route == null) throw new ArgumentNullException(nameof(route));
-            if (endpoints == null) throw new ArgumentNullException(nameof(endpoints));
-            if (client == null) throw new ArgumentNullException(nameof(client));
+            ArgumentNullException.ThrowIfNull(route);
+            ArgumentNullException.ThrowIfNull(endpoints);
+            ArgumentNullException.ThrowIfNull(client);
             if (matcher == null) matcher = new RouteEndpointMatcher();
 
             // Arrange

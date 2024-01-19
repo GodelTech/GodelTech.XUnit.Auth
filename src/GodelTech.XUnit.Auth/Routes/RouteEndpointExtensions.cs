@@ -22,8 +22,8 @@ namespace GodelTech.XUnit.Auth.Routes
             TemplateBinderFactory factory,
             RouteValueDictionary routeValues)
         {
-            if (endpoint == null) throw new ArgumentNullException(nameof(endpoint));
-            if (factory == null) throw new ArgumentNullException(nameof(factory));
+            ArgumentNullException.ThrowIfNull(endpoint);
+            ArgumentNullException.ThrowIfNull(factory);
 
             var templateBinder = factory.Create(endpoint.RoutePattern);
 
