@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GodelTech.Microservices.Security" Version="8.0.0" />
+    <PackageReference Include="GodelTech.Microservices.Security" Version="8.0.1" />
   </ItemGroup>
 
 </Project>
